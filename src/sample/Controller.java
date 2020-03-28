@@ -1,10 +1,7 @@
 package sample;
 
-import javafx.collections.FXCollections;
-
 import javafx.collections.ObservableList;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -21,8 +18,12 @@ Controller {
         this.patients = patients;
 
     }
+
     public boolean open(File file, ObservableList<Patient> list) {
-        if (saxReader == null) saxReader = new LoadInfo();
+        if (saxReader == null)  {
+            saxReader = new LoadInfo();
+        }
+
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
@@ -42,6 +43,7 @@ Controller {
         if (writerXML == null) {
             writerXML = new SaveInfo();
         }
+
         writerXML.setFile(file);
 
         try {
@@ -53,10 +55,9 @@ Controller {
         }
     }
 
-    public ObservableList<Patient> search(String text1, String text2) {
+    public ObservableList<Patient> search(String surname, String address) {
         SearchAndDeleteModel pattern = new SearchAndDeleteModel();
-        ObservableList<Patient> dopList = pattern.checkPattern(text1, text2, patients);
-        return dopList;
+        return pattern.checkPattern(surname, address, patients);
     }
 /*
     public ObservableList<Patient> search(String text1, String text2, boolean chooseCourse, boolean chooseGroup) {
@@ -65,11 +66,11 @@ Controller {
         return dopList;
     }
 */
-    public ObservableList<Patient> delete(String text1, String text2) {
+    public ObservableList<Patient> delete(String surname, String address) {
         SearchAndDeleteModel pattern = new SearchAndDeleteModel();
-        ObservableList<Patient> dopList = pattern.checkPattern(text1, text2, patients);
-        patients.removeAll(dopList);
-        return dopList;
+        ObservableList<Patient> newPatientsList = pattern.checkPattern(surname, address, patients);
+        patients.removeAll(newPatientsList);
+        return newPatientsList;
     }
 /*
     public ObservableList<Patient> delete(String text1, String text2, boolean chooseCourse, boolean chooseGroup) {
@@ -79,7 +80,7 @@ Controller {
         return dopList;
     }
 */
-    public void add (Patient someObj) {
+    public void add(Patient someObj) {
         patients.add(someObj);
     }
 

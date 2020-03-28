@@ -9,37 +9,41 @@ import javafx.scene.layout.VBox;
 
 public class SearchInfo{
     public void run(ObservableList<Patient> list){
-        ObservableList<Patient> dopList = FXCollections.observableArrayList();
-        SearchAndDeleteModel seatchModel = new SearchAndDeleteModel();
+        ObservableList<Patient> newPatientsList = FXCollections.observableArrayList();
+
+        SearchAndDeleteModel searchModel = new SearchAndDeleteModel();
         SearchAndDeleteView form = new SearchAndDeleteView();
+
         Table table = new Table();
-        VBox tableNew = table.create(dopList);
+        VBox newTableForm = table.create(newPatientsList);
         TableView newTable = new TableView();
         new Table().createTable(newTable);
+
         form.sceneOfSearch("Search");
-        form.stageForAdding.getChildren().add(tableNew);
+        form.stageForAdding.getChildren().add(newTableForm);
+
         Controller controller = new Controller(list);
+
         form.choose1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                while(dopList.size()!=0) {
-                    dopList.remove(0);
-                }
-                if(!seatchModel.check(form.getInputName1(),form.getInputGroup1())){
+                newPatientsList.clear();
+
+                if (!searchModel.check(form.getInputName1(),form.getInputGroup1())) {
                     form.alert("Enter information");
                     return;
                 }
-                ObservableList<Patient> dopList = controller.search(form.getInputName1(),form.getInputGroup1());
-                table.updateAll(dopList);
+
+                ObservableList<Patient> newPatientsList = controller.search(form.getInputName1(),form.getInputGroup1());
+                table.updateAll(newPatientsList);
             }
         });
         form.choose2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                while(dopList.size()!=0) {
-                    dopList.remove(0);
-                }
-                if(!seatchModel.check(form.getInputCourse(),form.getInputLang())){
+                newPatientsList.clear();
+
+                if(!searchModel.check(form.getInputCourse(),form.getInputLang())){
                     form.alert("Enter information");
                     return;
                 }
@@ -50,35 +54,33 @@ public class SearchInfo{
         form.choose3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                while(dopList.size()!=0) {
-                    dopList.remove(0);
-                }
-                ObservableList<Patient> dopList = FXCollections.observableArrayList();
-                if(!seatchModel.check(form.getInputCourseOrGroup(),form.getInputWorks())){
-                    form.alert("Enter information");
-                    return;
-                }
+                newPatientsList.clear();
 
-                if(!seatchModel.checkSelection(form.getChooseCourse(),form.getChooseGroup())){
-                    form.alert("Choose something");
-                    return;
+                ObservableList<Patient> dopList = FXCollections.observableArrayList();
+                if(!searchModel.check(form.getInputCourseOrGroup(),form.getInputWorks())){
+                    form.alert("Enter information");
                 }
-              //  dopList = controller.search(form.getInputCourseOrGroup(), form.getInputWorks(), form.getChooseCourse(),form.getChooseGroup());;
-                //table.updateAll(dopList);
+                else if (!searchModel.checkSelection(form.getChooseCourse(),form.getChooseGroup())){
+                    form.alert("Choose something");
+                }
+                else {
+                    //  dopList = controller.search(form.getInputCourseOrGroup(), form.getInputWorks(), form.getChooseCourse(),form.getChooseGroup());;
+                    //table.updateAll(dopList);
+                }
             }
         });
         form.choose4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                while(dopList.size()!=0) {
-                    dopList.remove(0);
-                }
-                if(!seatchModel.check(form.getInputCourse4(),form.getInputAllWorks())){
+                newPatientsList.clear();
+
+                if(!searchModel.check(form.getInputCourse4(),form.getInputAllWorks())){
                     form.alert("Enter information");
-                    return;
                 }
-                ObservableList<Patient> dopList = controller.search(form.getInputCourse4(),form.getInputAllWorks());
-                table.updateAll(dopList);
+                else {
+                    ObservableList<Patient> dopList = controller.search(form.getInputCourse4(), form.getInputAllWorks());
+                    table.updateAll(dopList);
+                }
             }
         });
     }

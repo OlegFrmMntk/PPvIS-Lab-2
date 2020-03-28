@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import sample.Patient;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -90,7 +89,4 @@ public class SaveInfo {
             ex.printStackTrace();
         }
     }
-
-
-
 }
