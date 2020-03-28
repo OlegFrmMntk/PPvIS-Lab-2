@@ -15,13 +15,12 @@ import javafx.scene.control.*;
 import java.io.File;
 
 public class Main extends Application {
+
     ObservableList<Patient> patientsData = FXCollections.observableArrayList();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Controller controller = new Controller(patientsData);
-
-        Table tableView = new Table();
 
         Button open = new Button("Open");
         Button add = new Button("Add");
@@ -36,10 +35,8 @@ public class Main extends Application {
         buttons.setAlignment(Pos.CENTER);
         buttons.getChildren().addAll(open, add, search, delete, save, exit);
 
-        TableView table = new TableView();
-        new Table().createTable(table);
-
-        VBox tableww = tableView.create(patientsData);
+        new Table(new TableView());
+        Table tableView = new Table(new TableView());
 
         add.setOnAction(event -> new AddInfo().add(patientsData, tableView));
 
@@ -57,13 +54,11 @@ public class Main extends Application {
         });
 
         search.setOnAction(event -> new SearchInfo().run(patientsData));
-
         delete.setOnAction(event -> new DeleteInfo().run(patientsData, tableView));
-
         exit.setOnAction(event -> controller.exit());
 
-        VBox general = new VBox();
-        general.getChildren().addAll(buttons, tableww);
+        VBox patientsTable = tableView.create(patientsData);
+        VBox general = new VBox(buttons, patientsTable);
 
         primaryStage.setTitle("Patients");
         primaryStage.setScene(new Scene(general, 700, 600));

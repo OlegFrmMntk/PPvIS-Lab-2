@@ -14,10 +14,9 @@ public class SearchInfo{
         SearchAndDeleteModel searchModel = new SearchAndDeleteModel();
         SearchAndDeleteView form = new SearchAndDeleteView();
 
-        Table table = new Table();
+        Table table = new Table(new TableView());
         VBox newTableForm = table.create(newPatientsList);
-        TableView newTable = new TableView();
-        new Table().createTable(newTable);
+        new Table(new TableView());
 
         form.sceneOfSearch("Search");
         form.stageForAdding.getChildren().add(newTableForm);
@@ -38,6 +37,7 @@ public class SearchInfo{
                 table.updateAll(newPatientsList);
             }
         });
+
         form.choose2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

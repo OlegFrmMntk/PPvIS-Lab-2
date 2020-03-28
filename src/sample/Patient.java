@@ -71,9 +71,7 @@ public class Patient {
         this.bornDate.set(bornDate);
     }
 
-    public LocalDate getReceiptDate() {
-         return this.receiptDate.get();
-    }
+    public LocalDate getReceiptDate() { return this.receiptDate.get(); }
 
     public SimpleObjectProperty<LocalDate> getReceiptDateProperty() {
         return this.receiptDate;

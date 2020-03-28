@@ -26,7 +26,7 @@ public class Table {
     private int toIndex;
     private int rowsPerPage;
 
-    public void createTable(TableView table) {
+    public Table(TableView table) {
         TableColumn<Patient, String> nameColumn = new TableColumn<>("Name");
         TableColumn<Patient, String> surnameColumn = new TableColumn<>("Surname");
         TableColumn<Patient, String> addressColumn = new TableColumn<>("Address");
@@ -45,7 +45,7 @@ public class Table {
         conclusionColumn.setCellValueFactory(new PropertyValueFactory<>("conclusion"));
 
         table.getColumns().addAll(nameColumn, surnameColumn, addressColumn, bornDateColumn, receiptDateColumn,
-                                  doctorFioColumn, conclusionColumn);
+                doctorFioColumn, conclusionColumn);
     }
 
     public VBox create(ObservableList<Patient> list)  {
@@ -99,8 +99,7 @@ public class Table {
         HBox setPageBox = new HBox(10);
         setPageBox.setAlignment(Pos.CENTER);
         setPageBox.getChildren().addAll(pageField, setPage);
-        HBox pageCtrlBox = new HBox(150);
-        pageCtrlBox.setPadding(new Insets(50,0,0,0));
+        HBox pageCtrlBox = new HBox(10);
         pageCtrlBox.getChildren().addAll(firstPages,setPageBox,lastPages);
         pageCtrlBox.setAlignment(Pos.CENTER);
 
@@ -128,7 +127,7 @@ public class Table {
         rowPerPageSetBox.getChildren().addAll(setRowsPerPageButton, rowsNumPerPage);
         rowPerPageSetBox.setAlignment(Pos.CENTER);
 
-        overallBox.getChildren().addAll( pageCtrlBox,table, pageNumInfo, currPageNumInfo,labelsBox, rowPerPageSetBox);
+        overallBox.getChildren().addAll(table, pageCtrlBox, pageNumInfo, currPageNumInfo,labelsBox, rowPerPageSetBox);
 
 
         updatePageNum(list);
