@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.beans.property.SimpleObjectProperty;
 import java.time.LocalDate;
 
 public class Patient {

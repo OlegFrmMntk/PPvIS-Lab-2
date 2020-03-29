@@ -8,10 +8,10 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class LoadInfo extends DefaultHandler {
     enum Element {
-        patient, patients, name, surname, address, bornDate, receiptDate, doctorFio, conclusion;
+        patient, patients, name, surname, address, birthDate, receiptDate, doctorFio, conclusion;
     }
 
-    private ObservableList<Patient> patientsList;
+    private ObservableList<Patient> patients;
     private Patient patient;
     private Element thisElem;
 
@@ -32,8 +32,8 @@ public class LoadInfo extends DefaultHandler {
             case "address":
                 thisElem = Element.address;
                 break;
-            case "bornDate":
-                thisElem = Element.bornDate;
+            case "birthDate":
+                thisElem = Element.birthDate;
                 break;
             case "receiptDate":
                 thisElem = Element.receiptDate;
@@ -42,7 +42,7 @@ public class LoadInfo extends DefaultHandler {
                 thisElem = Element.doctorFio;
                 break;
             case "patients":
-                patientsList = FXCollections.observableArrayList();
+                patients = FXCollections.observableArrayList();
                 thisElem = Element.patients;
                 break;
         }
@@ -56,7 +56,6 @@ public class LoadInfo extends DefaultHandler {
             return;
         }
 
-        // Дописать дату
         if (thisElem.equals(Element.name)) {
             patient.setName(str);
         }
@@ -65,6 +64,14 @@ public class LoadInfo extends DefaultHandler {
         }
         else if (thisElem.equals(Element.address)) {
             patient.setAddress(str);
+        }
+        else if (thisElem.equals(Element.birthDate)) {
+            // Написать конвертер из строки в дату
+            //patient.setBirthDate(str);
+        }
+        else if (thisElem.equals(Element.receiptDate)) {
+            // Написать конвертер из строки в дату
+            //patient.setReceiptDate(str);
         }
         else if (thisElem.equals(Element.doctorFio)) {
             patient.setDoctorFio(str);
@@ -77,13 +84,13 @@ public class LoadInfo extends DefaultHandler {
     @Override
     public void endElement(String namespaceURI, String localName, String nameField) throws SAXException {
         if (nameField.equals("patient")) {
-            patientsList.add(patient);
+            patients.add(patient);
             patient = null;
         }
     }
 
     public ObservableList<Patient> getPatientsList() {
-        return patientsList;
+        return patients;
     }
 }
 

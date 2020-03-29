@@ -72,10 +72,10 @@ public class AddInfo {
                     addressInput.getText().isEmpty() || doctorNameInput.getText().isEmpty() ||
                     doctorSurnameInput.getText().isEmpty() || conclusionInput.getText().isEmpty()) {
 
-                    Alert warn = new Alert(Alert.AlertType.WARNING);
-                    warn.setTitle("Warning");
-                    warn.setContentText("Some fields are empty.");
-                    warn.showAndWait();
+                    Alert warning = new Alert(Alert.AlertType.WARNING);
+                    warning.setTitle("Warning");
+                    warning.setContentText("Some fields are empty.");
+                    warning.showAndWait();
                     return;
                 }
 

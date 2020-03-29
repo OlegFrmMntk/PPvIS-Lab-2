@@ -16,11 +16,11 @@ import java.io.File;
 
 public class Main extends Application {
 
-    ObservableList<Patient> patientsData = FXCollections.observableArrayList();
+    ObservableList<Patient> patients = FXCollections.observableArrayList();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Controller controller = new Controller(patientsData);
+        Controller controller = new Controller(patients);
 
         Button open = new Button("Open");
         Button add = new Button("Add");
@@ -38,30 +38,31 @@ public class Main extends Application {
         new Table(new TableView());
         Table tableView = new Table(new TableView());
 
-        add.setOnAction(event -> new AddInfo().add(patientsData, tableView));
+        add.setOnAction(event -> new AddInfo().add(patients, tableView));
 
         open.setOnAction(event ->{
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showOpenDialog(primaryStage);
-            controller.open(file, patientsData);
-            tableView.updateAll(patientsData);
+            controller.open(file, patients);
+            tableView.updateAll(patients);
         });
 
         save.setOnAction(event ->{
             FileChooser fileChooser = new FileChooser();
             File file = fileChooser.showSaveDialog(primaryStage);
-            controller.save(file,patientsData);
+            controller.save(file, patients);
         });
 
-        search.setOnAction(event -> new SearchInfo().run(patientsData));
-        delete.setOnAction(event -> new DeleteInfo().run(patientsData, tableView));
+        search.setOnAction(event -> new SearchInfo().run(patients));
+        delete.setOnAction(event -> new DeleteInfo().run(patients, tableView));
         exit.setOnAction(event -> controller.exit());
 
-        VBox patientsTable = tableView.create(patientsData);
+        VBox patientsTable = tableView.create(patients);
+        patientsTable.setMaxHeight(470);
         VBox general = new VBox(buttons, patientsTable);
 
         primaryStage.setTitle("Patients");
-        primaryStage.setScene(new Scene(general, 700, 600));
+        primaryStage.setScene(new Scene(general, 700, 550));
         primaryStage.show();
     }
 
