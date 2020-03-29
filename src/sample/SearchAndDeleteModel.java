@@ -1,12 +1,12 @@
 package sample;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 
 public class SearchAndDeleteModel {
+
     public boolean check(String checkingInfo1, String checkingInfo2){
         return !checkingInfo1.isEmpty() && !checkingInfo2.isEmpty();
     }
@@ -25,10 +25,10 @@ public class SearchAndDeleteModel {
         return newTableList;
     }
 
-    public ObservableList<Patient> checkPattern(SimpleObjectProperty<LocalDate> date, ObservableList<Patient> list) {
+    public ObservableList<Patient> checkPattern(LocalDate date, ObservableList<Patient> list) {
         ObservableList<Patient> newTableList = FXCollections.observableArrayList();
         for (Patient patient : list) {
-            if (patient.getBornDateProperty() == date || patient.getReceiptDateProperty() == date) {
+            if (patient.getBirthDate() == date || patient.getReceiptDate() == date) {
                 newTableList.add(patient);
             }
         }

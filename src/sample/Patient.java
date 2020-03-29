@@ -6,10 +6,9 @@ import java.time.LocalDate;
 public class Patient {
     private String name;
     private String surname;
-    private String fio;
     private String address;
-    private SimpleObjectProperty<LocalDate> bornDate;
-    private SimpleObjectProperty<LocalDate> receiptDate;
+    private LocalDate birthDate;
+    private LocalDate receiptDate;
     private String doctorFio;
     private String conclusion;
 
@@ -17,19 +16,18 @@ public class Patient {
         this.name = "";
         this.surname = "";
         this.address = "";
-        this.bornDate = null;
+        this.birthDate = null;
         this.receiptDate = null;
         this.doctorFio = "";
         this.conclusion = "";
     }
 
-    public Patient(String name, String surname, String address,
-                   SimpleObjectProperty<LocalDate> bornDate, SimpleObjectProperty<LocalDate> receiptDate,
-                   String doctorName, String doctorSurname, String conclusion) {
+    public Patient(String name, String surname, String address, LocalDate bornDate,
+                   LocalDate receiptDate, String doctorName, String doctorSurname, String conclusion) {
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.bornDate = bornDate;
+        this.birthDate = bornDate;
         this.receiptDate = receiptDate;
         this.doctorFio = doctorName + " " + doctorSurname;
         this.conclusion = conclusion;
@@ -59,27 +57,13 @@ public class Patient {
         this.address = address;
     }
 
-    public LocalDate getBornDate() {
-        return this.bornDate.get();
-    }
+    public LocalDate getBirthDate() { return this.birthDate; }
 
-    public SimpleObjectProperty<LocalDate> getBornDateProperty() {
-        return this.bornDate;
-    }
+    public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
 
-    public void setBornDate(LocalDate bornDate) {
-        this.bornDate.set(bornDate);
-    }
+    public LocalDate getReceiptDate() { return this.receiptDate; }
 
-    public LocalDate getReceiptDate() { return this.receiptDate.get(); }
-
-    public SimpleObjectProperty<LocalDate> getReceiptDateProperty() {
-        return this.receiptDate;
-    }
-
-    public void setReceiptData(LocalDate receiptDate) {
-        this.receiptDate.set(receiptDate);
-    }
+    public void setReceiptData(LocalDate receiptDate) { this.receiptDate = receiptDate; }
 
     public String getDoctorFio() {
         return this.doctorFio;

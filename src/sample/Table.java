@@ -30,8 +30,8 @@ public class Table {
         TableColumn<Patient, String> nameColumn = new TableColumn<>("Name");
         TableColumn<Patient, String> surnameColumn = new TableColumn<>("Surname");
         TableColumn<Patient, String> addressColumn = new TableColumn<>("Address");
-        TableColumn<Patient, SimpleObjectProperty<LocalDate>> bornDateColumn = new TableColumn<>("Date of born");
-        TableColumn<Patient, SimpleObjectProperty<LocalDate>> receiptDateColumn = new TableColumn<>("Date of receipt");
+        TableColumn<Patient, LocalDate> birthDateColumn = new TableColumn<>("Date of birth");
+        TableColumn<Patient, LocalDate> receiptDateColumn = new TableColumn<>("Date of receipt");
         TableColumn<Patient, String> doctorFioColumn = new TableColumn<>("Doctor FIO");
         TableColumn<Patient, String> conclusionColumn = new TableColumn<>("Conclusion");
 
@@ -39,13 +39,13 @@ public class Table {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-        bornDateColumn.setCellValueFactory(new PropertyValueFactory<>("bornDate"));
+        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         receiptDateColumn.setCellValueFactory(new PropertyValueFactory<>("receiptDate"));
         doctorFioColumn.setCellValueFactory(new PropertyValueFactory<>("doctorFio"));
         conclusionColumn.setCellValueFactory(new PropertyValueFactory<>("conclusion"));
 
-        table.getColumns().addAll(nameColumn, surnameColumn, addressColumn, bornDateColumn, receiptDateColumn,
-                doctorFioColumn, conclusionColumn);
+        table.getColumns().addAll(nameColumn, surnameColumn, addressColumn, birthDateColumn, receiptDateColumn,
+                                  doctorFioColumn, conclusionColumn);
     }
 
     public VBox create(ObservableList<Patient> list)  {
@@ -60,8 +60,8 @@ public class Table {
         TableColumn<Patient, String> nameColumn = new TableColumn<>("Name");
         TableColumn<Patient, String> surnameColumn = new TableColumn<>("Surname");
         TableColumn<Patient, String> addressColumn = new TableColumn<>("Address");
-        TableColumn<Patient, SimpleObjectProperty<LocalDate>> bornDateColumn = new TableColumn<>("Date of born");
-        TableColumn<Patient, SimpleObjectProperty<LocalDate>> receiptDateColumn = new TableColumn<>("Date of receipt");
+        TableColumn<Patient, LocalDate> birthDateColumn = new TableColumn<>("Date of birth");
+        TableColumn<Patient, LocalDate> receiptDateColumn = new TableColumn<>("Date of receipt");
         TableColumn<Patient, String> doctorFioColumn = new TableColumn<>("Doctor FIO");
         TableColumn<Patient, String> conclusionColumn = new TableColumn<>("Conclusion");
 
@@ -75,12 +75,12 @@ public class Table {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-        bornDateColumn.setCellValueFactory(new PropertyValueFactory<>("bornDate"));
+        birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         receiptDateColumn.setCellValueFactory(new PropertyValueFactory<>("receiptDate"));
         doctorFioColumn.setCellValueFactory(new PropertyValueFactory<>("doctorFio"));
         conclusionColumn.setCellValueFactory(new PropertyValueFactory<>("conclusion"));
 
-        table.getColumns().addAll(nameColumn, surnameColumn, addressColumn, bornDateColumn, receiptDateColumn,
+        table.getColumns().addAll(nameColumn, surnameColumn, addressColumn, birthDateColumn, receiptDateColumn,
                                   doctorFioColumn, conclusionColumn);
 
         Button prev = new Button("Prev");

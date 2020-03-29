@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ObservableList;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -29,8 +28,8 @@ public class SaveInfo {
         List<String> name = new ArrayList<>();
         List<String> surname = new ArrayList<>();
         List<String> address = new ArrayList<>();
-        List<SimpleObjectProperty<LocalDate>> bornDate = new ArrayList<>();
-        List<SimpleObjectProperty<LocalDate>> receiptDate = new ArrayList<>();
+        List<LocalDate> birthDate = new ArrayList<>();
+        List<LocalDate> receiptDate = new ArrayList<>();
         List<String> doctorFio = new ArrayList<>();
         List<String> conclusion = new ArrayList<>();
 
@@ -38,8 +37,8 @@ public class SaveInfo {
             name.add(info.getName());
             surname.add(info.getSurname());
             address.add(info.getAddress());
-            bornDate.add(info.getBornDateProperty());
-            receiptDate.add(info.getReceiptDateProperty());
+            birthDate.add(info.getBirthDate());
+            receiptDate.add(info.getReceiptDate());
             doctorFio.add(info.getDoctorFio());
             conclusion.add(info.getConclusion());
         }
@@ -53,7 +52,7 @@ public class SaveInfo {
                     Element nameTag = document.createElement("name");
                     Element surnameTag = document.createElement("surname");
                     Element addressTag = document.createElement("address");
-                    Element bornDateTag = document.createElement("bornDate");
+                    Element birthDateTag = document.createElement("birthDate");
                     Element receiptDateTag = document.createElement("receiptDate");
                     Element doctorFioTag = document.createElement("doctorFio");
                     Element conclusionTag = document.createElement("conclusion");
@@ -62,8 +61,8 @@ public class SaveInfo {
                     nameTag.setTextContent(name.get(i));
                     surnameTag.setTextContent(surname.get(i));
                     addressTag.setTextContent(address.get(i));
-                    //bornDateTag.setTextContent(bornDate.get(i));
-                    //receiptDateTag.setTextContent(receiptDate.get(i));
+                    birthDateTag.setTextContent(birthDate.get(i).toString());
+                    receiptDateTag.setTextContent(receiptDate.get(i).toString());
                     doctorFioTag.setTextContent(doctorFio.get(i));
                     conclusionTag.setTextContent(conclusion.get(i));
 
@@ -71,7 +70,7 @@ public class SaveInfo {
                     patient.appendChild(nameTag);
                     patient.appendChild(surnameTag);
                     patient.appendChild(addressTag);
-                    patient.appendChild(bornDateTag);
+                    patient.appendChild(birthDateTag);
                     patient.appendChild(receiptDateTag);
                     patient.appendChild(doctorFioTag);
                     patient.appendChild(conclusionTag);
