@@ -8,7 +8,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class LoadInfo extends DefaultHandler {
     enum Element {
-        patient, patients, name, surname, address, birthDate, receiptDate, doctorFio, conclusion;
+        patient, patients, name, surname, address, birthDate, receiptDate, doctorName, doctorSurname, conclusion;
     }
 
     private ObservableList<Patient> patients;
@@ -38,8 +38,11 @@ public class LoadInfo extends DefaultHandler {
             case "receiptDate":
                 thisElem = Element.receiptDate;
                 break;
-            case "doctorFio":
-                thisElem = Element.doctorFio;
+            case "doctorName":
+                thisElem = Element.doctorName;
+                break;
+            case "doctorSurname":
+                thisElem = Element.doctorSurname;
                 break;
             case "patients":
                 patients = FXCollections.observableArrayList();
@@ -52,7 +55,7 @@ public class LoadInfo extends DefaultHandler {
     public void characters(char[] ch, int start, int length) throws SAXException {
         String str = new String(ch, start, length).trim();
 
-        if (str.equals("")) {
+        if (str.isEmpty()) {
             return;
         }
 
@@ -73,8 +76,11 @@ public class LoadInfo extends DefaultHandler {
             // Написать конвертер из строки в дату
             //patient.setReceiptDate(str);
         }
-        else if (thisElem.equals(Element.doctorFio)) {
-            patient.setDoctorFio(str);
+        else if (thisElem.equals(Element.doctorName)) {
+            patient.setDoctorName(str);
+        }
+        else if (thisElem.equals(Element.doctorSurname)) {
+            patient.setDoctorSurname(str);
         }
         else if (thisElem.equals(Element.conclusion)) {
             patient.setConclusion(str);
@@ -89,7 +95,7 @@ public class LoadInfo extends DefaultHandler {
         }
     }
 
-    public ObservableList<Patient> getPatientsList() {
+    public ObservableList<Patient> getPatientList() {
         return patients;
     }
 }

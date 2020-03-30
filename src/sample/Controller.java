@@ -7,15 +7,16 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class
 Controller {
     LoadInfo saxReader;
     SaveInfo writerXML;
-    ObservableList<Patient> patients;
+    ObservableList<Patient> patientList;
 
     public Controller(ObservableList<Patient> patients) {
-        this.patients = patients;
+        this.patientList = patients;
 
     }
 
@@ -30,7 +31,7 @@ Controller {
             parser.parse(file, saxReader);
             list.clear();
 
-            list.addAll(saxReader.getPatientsList());
+            list.addAll(saxReader.getPatientList());
             return true;
         }
         catch (ParserConfigurationException | SAXException | IOException e) {
@@ -55,33 +56,32 @@ Controller {
         }
     }
 
-    public ObservableList<Patient> search(String surname, String address) {
+    public ObservableList<Patient> search(String data, boolean isSurname) {
         SearchAndDeleteModel pattern = new SearchAndDeleteModel();
-        return pattern.checkPattern(surname, address, patients);
+        return pattern.checkPattern(data, isSurname, patientList);
     }
-/*
-    public ObservableList<Patient> search(String text1, String text2, boolean chooseCourse, boolean chooseGroup) {
+
+    public ObservableList<Patient> search(LocalDate date, boolean isBirthDate) {
         SearchAndDeleteModel pattern = new SearchAndDeleteModel();
-        ObservableList<Patient> dopList = pattern.checkPattern(text1, text2, patients, chooseCourse, chooseGroup);
-        return dopList;
+        return  pattern.checkPattern(date, isBirthDate, patientList);
     }
-*/
-    public ObservableList<Patient> delete(String surname, String address) {
+
+
+    public ObservableList<Patient> delete(String data, boolean isSurname) {
         SearchAndDeleteModel pattern = new SearchAndDeleteModel();
-        ObservableList<Patient> newPatientsList = pattern.checkPattern(surname, address, patients);
-        patients.removeAll(newPatientsList);
-        return newPatientsList;
+        ObservableList<Patient> newPatientList = pattern.checkPattern(data, isSurname, patientList);
+        patientList.removeAll(newPatientList);
+        return newPatientList;
     }
-/*
-    public ObservableList<Patient> delete(String text1, String text2, boolean chooseCourse, boolean chooseGroup) {
+
+    public  ObservableList<Patient> delete(LocalDate date, boolean isBirthDate) {
         SearchAndDeleteModel pattern = new SearchAndDeleteModel();
-        ObservableList<Patient> dopList = pattern.checkPattern(text1, text2, patients, chooseCourse, chooseGroup);
-        patients.removeAll(dopList);
-        return dopList;
+        ObservableList<Patient> newPatientList = pattern.checkPattern(date, isBirthDate, patientList);
+        patientList.removeAll(newPatientList);
+        return newPatientList;
     }
-*/
     public void add(Patient someObj) {
-        patients.add(someObj);
+        patientList.add(someObj);
     }
 
     public void exit() {

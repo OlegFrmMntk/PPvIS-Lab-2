@@ -30,7 +30,8 @@ public class SaveInfo {
         List<String> address = new ArrayList<>();
         List<LocalDate> birthDate = new ArrayList<>();
         List<LocalDate> receiptDate = new ArrayList<>();
-        List<String> doctorFio = new ArrayList<>();
+        List<String> doctorName = new ArrayList<>();
+        List<String> doctorSurname = new ArrayList<>();
         List<String> conclusion = new ArrayList<>();
 
         for (Patient info : patientList) {
@@ -39,7 +40,8 @@ public class SaveInfo {
             address.add(info.getAddress());
             birthDate.add(info.getBirthDate());
             receiptDate.add(info.getReceiptDate());
-            doctorFio.add(info.getDoctorFio());
+            doctorName.add(info.getDoctorName());
+            doctorSurname.add(info.getDoctorSurname());
             conclusion.add(info.getConclusion());
         }
 
@@ -54,7 +56,8 @@ public class SaveInfo {
                     Element addressTag = document.createElement("address");
                     Element birthDateTag = document.createElement("birthDate");
                     Element receiptDateTag = document.createElement("receiptDate");
-                    Element doctorFioTag = document.createElement("doctorFio");
+                    Element doctorNameTag = document.createElement("doctorName");
+                    Element doctorSurnameTag = document.createElement("doctorSurname");
                     Element conclusionTag = document.createElement("conclusion");
                     Element patient = document.createElement("patient");
 
@@ -63,7 +66,8 @@ public class SaveInfo {
                     addressTag.setTextContent(address.get(i));
                     birthDateTag.setTextContent(birthDate.get(i).toString());
                     receiptDateTag.setTextContent(receiptDate.get(i).toString());
-                    doctorFioTag.setTextContent(doctorFio.get(i));
+                    doctorNameTag.setTextContent(doctorName.get(i));
+                    doctorSurnameTag.setTextContent(doctorSurname.get(i));
                     conclusionTag.setTextContent(conclusion.get(i));
 
                     company.appendChild(patient);
@@ -72,7 +76,8 @@ public class SaveInfo {
                     patient.appendChild(addressTag);
                     patient.appendChild(birthDateTag);
                     patient.appendChild(receiptDateTag);
-                    patient.appendChild(doctorFioTag);
+                    patient.appendChild(doctorNameTag);
+                    patient.appendChild(doctorSurnameTag);
                     patient.appendChild(conclusionTag);
             }
 

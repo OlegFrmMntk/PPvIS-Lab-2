@@ -53,8 +53,8 @@ public class Main extends Application {
             controller.save(file, patients);
         });
 
-        search.setOnAction(event -> new SearchInfo().run(patients));
-        delete.setOnAction(event -> new DeleteInfo().run(patients, tableView));
+      //  search.setOnAction(event -> new SearchInfo().run(patients));
+     //   delete.setOnAction(event -> new DeleteInfo().run(patients, tableView));
         exit.setOnAction(event -> controller.exit());
 
         VBox patientsTable = tableView.create(patients);

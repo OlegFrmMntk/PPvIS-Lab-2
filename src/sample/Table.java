@@ -1,17 +1,12 @@
 package sample;
 
-
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import sample.Patient;
-
 import java.time.LocalDate;
 
 public class Table {
@@ -32,20 +27,21 @@ public class Table {
         TableColumn<Patient, String> addressColumn = new TableColumn<>("Address");
         TableColumn<Patient, LocalDate> birthDateColumn = new TableColumn<>("Date of birth");
         TableColumn<Patient, LocalDate> receiptDateColumn = new TableColumn<>("Date of receipt");
-        TableColumn<Patient, String> doctorFioColumn = new TableColumn<>("Doctor FIO");
+        TableColumn<Patient, String> doctorNameColumn = new TableColumn<>("Doctor Name");
+        TableColumn<Patient, String> doctorSurnameColumn = new TableColumn<>("Doctor Surname");
         TableColumn<Patient, String> conclusionColumn = new TableColumn<>("Conclusion");
-
-
+        
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         receiptDateColumn.setCellValueFactory(new PropertyValueFactory<>("receiptDate"));
-        doctorFioColumn.setCellValueFactory(new PropertyValueFactory<>("doctorFio"));
+        doctorNameColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        doctorSurnameColumn.setCellValueFactory(new PropertyValueFactory<>("doctorSurname"));
         conclusionColumn.setCellValueFactory(new PropertyValueFactory<>("conclusion"));
 
         table.getColumns().addAll(nameColumn, surnameColumn, addressColumn, birthDateColumn, receiptDateColumn,
-                                  doctorFioColumn, conclusionColumn);
+                                  doctorNameColumn, doctorSurnameColumn, conclusionColumn);
     }
 
     public VBox create(ObservableList<Patient> list)  {
@@ -62,7 +58,8 @@ public class Table {
         TableColumn<Patient, String> addressColumn = new TableColumn<>("Address");
         TableColumn<Patient, LocalDate> birthDateColumn = new TableColumn<>("Date of birth");
         TableColumn<Patient, LocalDate> receiptDateColumn = new TableColumn<>("Date of receipt");
-        TableColumn<Patient, String> doctorFioColumn = new TableColumn<>("Doctor FIO");
+        TableColumn<Patient, String> doctorNameColumn = new TableColumn<>("Doctor Name");
+        TableColumn<Patient, String> doctorSurnameColumn = new TableColumn<>("Doctor Surname");
         TableColumn<Patient, String> conclusionColumn = new TableColumn<>("Conclusion");
 
         if ((list.size() > (toIndex - fromIndex)) & ((toIndex - fromIndex) != -1)) {
@@ -77,17 +74,19 @@ public class Table {
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         birthDateColumn.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
         receiptDateColumn.setCellValueFactory(new PropertyValueFactory<>("receiptDate"));
-        doctorFioColumn.setCellValueFactory(new PropertyValueFactory<>("doctorFio"));
+        doctorNameColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+        doctorSurnameColumn.setCellValueFactory(new PropertyValueFactory<>("doctorSurname"));
         conclusionColumn.setCellValueFactory(new PropertyValueFactory<>("conclusion"));
 
         table.getColumns().addAll(nameColumn, surnameColumn, addressColumn, birthDateColumn, receiptDateColumn,
-                                  doctorFioColumn, conclusionColumn);
+                                  doctorNameColumn, doctorSurnameColumn, conclusionColumn);
 
         Button prev = new Button("Prev");
         Button next = new Button("Next");
         Button first = new Button("At First");
         Button last = new Button("At Last");
         Button setPage = new Button("Go");
+
         HBox firstPages = new HBox(10);
         firstPages.getChildren().addAll(first,prev);
         HBox lastPages = new HBox(10);

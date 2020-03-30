@@ -14,23 +14,12 @@ public class SearchAndDeleteView {
     private TextField inputName1, inputGroup1, inputCourse, inputLang,inputCourseOrGroup,inputWorks, inputCourse4, inputAllWorks;
     private RadioButton chooseCourse, chooseGroup;
     Stage deletingStage;
-    public VBox stageForAdding;
-    public void alert(String text){
-        Alert warn = new Alert(Alert.AlertType.INFORMATION);
-        warn.setTitle("Warning!");
-        warn.setContentText(text);
-        warn.showAndWait();
-    }
-    public void alertAdding(int k){
-        Alert warn = new Alert(Alert.AlertType.INFORMATION);
-        warn.setTitle("Warning!");
-        warn.setContentText("You have deleted "+k+" rows");
-        warn.showAndWait();
-    }
-    public void sceneOfSearch(String title) {
-        deletingStage = new Stage();
-        stageForAdding = new VBox();
-        stageForAdding.setPadding(new Insets(5, 10, 10, 10));
+    public VBox addingStage;
+
+    public void searchScene(String title) {
+        addingStage = new VBox();
+        addingStage.setPadding(new Insets(5, 10, 10, 10));
+
         HBox pattern1 = new HBox();
         Label name1 = new Label("Name + group");
         inputName1 = new TextField();
@@ -91,10 +80,26 @@ public class SearchAndDeleteView {
                 deletingStage.close();
             }
         });
-        stageForAdding.getChildren().addAll(pattern1, pattern2, pattern3, pattern4, returning);
+        addingStage.getChildren().addAll(pattern1, pattern2, pattern3, pattern4, returning);
+
+        deletingStage = new Stage();
         deletingStage.setTitle(title);
-        deletingStage.setScene(new Scene(stageForAdding, 700, 900));
+        deletingStage.setScene(new Scene(addingStage, 700, 900));
         deletingStage.show();
+    }
+
+    public void alert(String text){
+        Alert warn = new Alert(Alert.AlertType.INFORMATION);
+        warn.setTitle("Warning!");
+        warn.setContentText(text);
+        warn.showAndWait();
+    }
+
+    public void alertAdding(int k){
+        Alert warn = new Alert(Alert.AlertType.INFORMATION);
+        warn.setTitle("Warning!");
+        warn.setContentText("You have deleted " + k + " rows");
+        warn.showAndWait();
     }
 
     public String getInputGroup1() {

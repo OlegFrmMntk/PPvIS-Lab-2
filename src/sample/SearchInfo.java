@@ -1,4 +1,4 @@
-package sample;
+/*package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,16 +9,16 @@ import javafx.scene.layout.VBox;
 
 public class SearchInfo{
     public void run(ObservableList<Patient> list){
-        ObservableList<Patient> newPatientsList = FXCollections.observableArrayList();
+        ObservableList<Patient> newPatientList = FXCollections.observableArrayList();
 
         SearchAndDeleteModel searchModel = new SearchAndDeleteModel();
         SearchAndDeleteView form = new SearchAndDeleteView();
 
         Table table = new Table(new TableView());
-        VBox newTableForm = table.create(newPatientsList);
+        VBox newTableForm = table.create(newPatientList);
         new Table(new TableView());
 
-        form.sceneOfSearch("Search");
+        form.searchScene("Search");
         form.stageForAdding.getChildren().add(newTableForm);
 
         Controller controller = new Controller(list);
@@ -26,7 +26,7 @@ public class SearchInfo{
         form.choose1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                newPatientsList.clear();
+                newPatientList.clear();
 
                 if (!searchModel.check(form.getInputName1(),form.getInputGroup1())) {
                     form.alert("Enter information");
@@ -41,7 +41,7 @@ public class SearchInfo{
         form.choose2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                newPatientsList.clear();
+                newPatientList.clear();
 
                 if(!searchModel.check(form.getInputCourse(),form.getInputLang())){
                     form.alert("Enter information");
@@ -54,7 +54,7 @@ public class SearchInfo{
         form.choose3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                newPatientsList.clear();
+                newPatientList.clear();
 
                 ObservableList<Patient> dopList = FXCollections.observableArrayList();
                 if(!searchModel.check(form.getInputCourseOrGroup(),form.getInputWorks())){
@@ -72,7 +72,7 @@ public class SearchInfo{
         form.choose4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                newPatientsList.clear();
+                newPatientList.clear();
 
                 if(!searchModel.check(form.getInputCourse4(),form.getInputAllWorks())){
                     form.alert("Enter information");
@@ -85,3 +85,4 @@ public class SearchInfo{
         });
     }
 }
+*/

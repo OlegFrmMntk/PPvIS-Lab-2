@@ -14,7 +14,6 @@ import java.time.LocalDate;
 
 public class AddInfo {
     public void add(ObservableList<Patient> patients, Table table){
-        Stage adding = new Stage();
 
         VBox addingStage = new VBox();
         addingStage.setPadding(new Insets(10, 20, 20, 20));
@@ -62,8 +61,12 @@ public class AddInfo {
         conclusionInput.setMinWidth(300);
         addingStage.getChildren().addAll(conclusion, conclusionInput);
 
-        Button addInfo = new Button("Add");
+        Button addInfo = new Button("Save");
         addingStage.getChildren().add(addInfo);
+
+        Stage adding = new Stage();
+        adding.setTitle("Information");
+        adding.setScene(new Scene(new HBox(addingStage, dateBox), 600, 450));
 
         addInfo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -91,8 +94,6 @@ public class AddInfo {
             }
         });
 
-        adding.setTitle("Information");
-        adding.setScene(new Scene(new HBox(addingStage, dateBox), 600, 450));
         adding.show();
     }
 }

@@ -7,40 +7,53 @@ import java.time.LocalDate;
 
 public class SearchAndDeleteModel {
 
-    public boolean check(String checkingInfo1, String checkingInfo2){
-        return !checkingInfo1.isEmpty() && !checkingInfo2.isEmpty();
+    public boolean check(String name, String surname) {
+        return !name.isEmpty() && !surname.isEmpty();
     }
 
-    public boolean checkSelection(boolean one, boolean two){
+    public boolean checkSelection(boolean one, boolean two) {
         return one || two;
     }
 
-    public ObservableList<Patient> checkPattern(String surname, String address, ObservableList<Patient> list) {
-        ObservableList<Patient> newTableList = FXCollections.observableArrayList();
-        for (Patient patient : list) {
-            if (patient.getSurname().equals(surname) && patient.getAddress().equals(address)) {
-                newTableList.add(patient);
+    public ObservableList<Patient>
+    checkPattern(String data, boolean IsSurname, ObservableList<Patient> patientList) {
+        ObservableList<Patient> newPatientList = FXCollections.observableArrayList();
+        for (Patient patient : patientList) {
+            if ((IsSurname && patient.getSurname().equals(data)) ||
+                    (!IsSurname && patient.getAddress().equals(data))) {
+                newPatientList.add(patient);
             }
         }
-        return newTableList;
+        return newPatientList;
     }
 
-    public ObservableList<Patient> checkPattern(LocalDate date, ObservableList<Patient> list) {
-        ObservableList<Patient> newTableList = FXCollections.observableArrayList();
-        for (Patient patient : list) {
-            if (patient.getBirthDate() == date || patient.getReceiptDate() == date) {
-                newTableList.add(patient);
+    public ObservableList<Patient>
+    checkPattern(LocalDate date, boolean isBirthDate, ObservableList<Patient> patientList) {
+        ObservableList<Patient> newPatientList = FXCollections.observableArrayList();
+        for (Patient patient : patientList) {
+            if ((isBirthDate && date.isEqual(patient.getBirthDate())) ||
+                    (!isBirthDate && date.isEqual(patient.getReceiptDate()))) {
+                newPatientList.add(patient);
             }
         }
-        return newTableList;
-    }
-/*
-    public ObservableList<Patient> checkPattern(String doctorName, ObservableList<Patient> list) {
-        ObservableList<Patient> newTableList = FXCollections.observableArrayList();
-        for (Patient patient : list) {
-            if (patient.getDoctorFio())
-        }
+        return newPatientList;
     }
 
- */
+    public ObservableList<Patient>
+    checkPattern(String name, String surname, ObservableList<Patient> patientList) {
+        ObservableList<Patient> newPatientList = FXCollections.observableArrayList();
+        for (Patient patient : patientList) {
+            if (name.isEmpty()) {
+                name = patient.getDoctorName();
+            }
+            if (surname.isEmpty()) {
+                surname = patient.getDoctorSurname();
+            }
+
+            if (name.equals(patient.getDoctorName()) && surname.equals(patient.getDoctorSurname())) {
+                newPatientList.add(patient);
+            }
+        }
+        return newPatientList;
+    }
 }

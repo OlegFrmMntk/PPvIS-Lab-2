@@ -8,7 +8,8 @@ public class Patient {
     private String address;
     private LocalDate birthDate;
     private LocalDate receiptDate;
-    private String doctorFio;
+    private String doctorName;
+    private String doctorSurname;
     private String conclusion;
 
     public Patient() {
@@ -17,7 +18,8 @@ public class Patient {
         this.address = "";
         this.birthDate = null;
         this.receiptDate = null;
-        this.doctorFio = "";
+        this.doctorName = "";
+        this.doctorSurname = "";
         this.conclusion = "";
     }
 
@@ -28,13 +30,12 @@ public class Patient {
         this.address = address;
         this.birthDate = bornDate;
         this.receiptDate = receiptDate;
-        this.doctorFio = doctorName + " " + doctorSurname;
+        this.doctorName = doctorName;
+        this.doctorSurname = doctorSurname;
         this.conclusion = conclusion;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
     public String getName() {
         return this.name;
@@ -64,12 +65,20 @@ public class Patient {
 
     public void setReceiptData(LocalDate receiptDate) { this.receiptDate = receiptDate; }
 
-    public String getDoctorFio() {
-        return this.doctorFio;
+    public String getDoctorName() {
+        return this.doctorName;
     }
 
-    public void setDoctorFio(String doctorFio) {
-        this.doctorFio = doctorFio;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public String getDoctorSurname() {
+        return this.doctorSurname;
+    }
+
+    public void setDoctorSurname(String doctorSurname) {
+        this.doctorName = doctorSurname;
     }
 
     public String getConclusion() {
