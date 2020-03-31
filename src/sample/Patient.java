@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.collections.ObservableArray;
+
 import java.time.LocalDate;
 
 public class Patient {

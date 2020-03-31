@@ -17,8 +17,6 @@ public class SearchAndDeleteView {
     public VBox addingStage;
 
     public void searchScene(String title) {
-        addingStage = new VBox();
-        addingStage.setPadding(new Insets(5, 10, 10, 10));
 
         HBox pattern1 = new HBox();
         Label name1 = new Label("Name + group");
@@ -80,6 +78,9 @@ public class SearchAndDeleteView {
                 deletingStage.close();
             }
         });
+
+        addingStage = new VBox();
+        addingStage.setPadding(new Insets(5, 10, 10, 10));
         addingStage.getChildren().addAll(pattern1, pattern2, pattern3, pattern4, returning);
 
         deletingStage = new Stage();
