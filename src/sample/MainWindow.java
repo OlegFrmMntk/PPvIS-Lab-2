@@ -36,7 +36,8 @@ public class MainWindow extends Application {
 
         //Group toolBar = getToolBar(primaryStage);
         //root.setLeft(toolBar);
-
+        // For pull request
+        
         Group tableBar = tableGroup.getGroup();
         root.setRight(tableBar);
 
