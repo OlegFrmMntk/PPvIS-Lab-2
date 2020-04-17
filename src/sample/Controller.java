@@ -69,29 +69,6 @@ public class Controller {
         mainTableData = saxParser.getPatients();
     }
 
-    public LocalDate parseDate(String dateString) {
-
-        int day = 0, month = 0, year = 0;
-        int numberOfPart = 1;
-
-        dateString = dateString.replace(".", "-");
-
-        for (String dateParseResult : dateString.split("-", 3)) {
-            if (numberOfPart == 1) {
-                day = Integer.parseInt(dateParseResult);
-            }
-            else if (numberOfPart == 2) {
-                month = Integer.parseInt(dateParseResult);
-            }
-            else if (numberOfPart == 3) {
-                year = Integer.parseInt(dateParseResult);
-            }
-            numberOfPart++;
-        }
-
-        return LocalDate.of(year, month, day);
-    }
-
     public void fullNameAndAddress(String fullName, String address) {
         List<Patient> searchResult = new ArrayList<>();
 

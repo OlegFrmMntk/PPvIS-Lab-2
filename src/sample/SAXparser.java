@@ -36,11 +36,11 @@ public class SAXparser extends DefaultHandler {
                 break;
             case "birthDate":
                 String birthDateString = new String(ch, start, length);
-                birthDate = parseDate(birthDateString);
+                birthDate = LocalDate.parse(birthDateString);
                 break;
             case "receiptDate":
                 String receiptDateString = new String(ch, start, length);
-                receiptDate = parseDate(receiptDateString);
+                receiptDate = LocalDate.parse(receiptDateString);
                 break;
             case "doctorFullName":
                 doctorFullName = new String(ch, start, length);
@@ -49,29 +49,6 @@ public class SAXparser extends DefaultHandler {
                 conclusion = new String(ch, start, length);
                 break;
         }
-    }
-
-    public LocalDate parseDate(String dateString) {
-
-        int day = 0, month = 0, year = 0;
-        int numberOfPart = 1;
-
-        dateString = dateString.replace(".", "-");
-
-        for (String dateParseResult : dateString.split("-", 3)) {
-            if (numberOfPart == 1) {
-                day = Integer.parseInt(dateParseResult);
-            }
-            else if (numberOfPart == 2) {
-                month = Integer.parseInt(dateParseResult);
-            }
-            else if (numberOfPart == 3) {
-                year = Integer.parseInt(dateParseResult);
-            }
-            numberOfPart++;
-        }
-
-        return LocalDate.of(year, month, day);
     }
 
     @Override
