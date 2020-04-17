@@ -27,7 +27,7 @@ public class Page<T> {
         return totalRecordsCount;
     }
 
-    public List<Patient> getPageData() {
+    public List<Patient> getPatients() {
         return pageData;
     }
 }

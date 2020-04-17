@@ -66,7 +66,7 @@ public class Controller {
         SAXparser saxParser = new SAXparser();
 
         parser.parse(file, saxParser);
-        mainTableData = saxParser.getFileData();
+        mainTableData = saxParser.getPatients();
     }
 
     public LocalDate parseDate(String dateString) {

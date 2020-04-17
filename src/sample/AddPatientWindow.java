@@ -59,7 +59,7 @@ public class AddPatientWindow {
         dateBox.getChildren().addAll(birthDate, birthDateInput);
 
         Label receiptDate = new Label("Date of receipt");
-        DatePicker receiptDateInput = new DatePicker(LocalDate.of(2020, 4, 1));
+        DatePicker receiptDateInput = new DatePicker(LocalDate.of(2020, 4, 17));
         dateBox.getChildren().addAll(receiptDate, receiptDateInput);
 
         Label doctorFullName = new Label("Doctor name");

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class MainWindowTableGroup {
 
     private Group group = new Group();
-    private ObservableList<Patient> tableData = FXCollections.observableArrayList();
+    private ObservableList<Patient> patients = FXCollections.observableArrayList();
     private Controller controller;
     private Label pageCountLabel = new Label();
     private Label totalRecordsCountLabel = new Label();
@@ -39,7 +39,7 @@ public class MainWindowTableGroup {
             updateTable();
         });
 
-        TableView<Patient> table = new TableView<>(tableData);
+        TableView<Patient> table = new TableView<>(patients);
 
         TableColumn<Patient, String> fullNameColumn = new TableColumn<Patient, String>("Full name");
         fullNameColumn.setCellValueFactory(new PropertyValueFactory<Patient, String>("fullName"));
@@ -127,7 +127,7 @@ public class MainWindowTableGroup {
 
     public void updateTable() {
         updateCurrentPage();
-        tableData.setAll(currentPage.getPageData());
+        patients.setAll(currentPage.getPatients());
         pageCount = currentPage.getPageCount();
         pageCountLabel.setText("Page count:" + getPageCount());
         totalRecordsCount = currentPage.getTotalRecordsCount();
@@ -151,8 +151,8 @@ public class MainWindowTableGroup {
         return group;
     }
 
-    public ObservableList<Patient> getTableData() {
-        return this.tableData;
+    public ObservableList<Patient> getPatients() {
+        return this.patients;
     }
 
     public int getPageCount() {

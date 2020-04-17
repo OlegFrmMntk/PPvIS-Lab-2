@@ -10,8 +10,7 @@ import java.util.List;
 
 public class SAXparser extends DefaultHandler {
 
-    private Controller controller;
-    private List<Patient> fileData = new ArrayList<>();
+    private List<Patient> patients = new ArrayList<>();
     private String thisElement = "";
     private String fullName = "";
     private String address = "";
@@ -22,7 +21,7 @@ public class SAXparser extends DefaultHandler {
     private int readCounter = 0;
 
     @Override
-    public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         thisElement = qName;
     }
 
@@ -37,11 +36,11 @@ public class SAXparser extends DefaultHandler {
                 break;
             case "birthDate":
                 String birthDateString = new String(ch, start, length);
-                birthDate = controller.parseDate(birthDateString);
+                birthDate = parseDate(birthDateString);
                 break;
             case "receiptDate":
                 String receiptDateString = new String(ch, start, length);
-                receiptDate = controller.parseDate(receiptDateString);
+                receiptDate = parseDate(receiptDateString);
                 break;
             case "doctorFullName":
                 doctorFullName = new String(ch, start, length);
@@ -52,19 +51,42 @@ public class SAXparser extends DefaultHandler {
         }
     }
 
+    public LocalDate parseDate(String dateString) {
+
+        int day = 0, month = 0, year = 0;
+        int numberOfPart = 1;
+
+        dateString = dateString.replace(".", "-");
+
+        for (String dateParseResult : dateString.split("-", 3)) {
+            if (numberOfPart == 1) {
+                day = Integer.parseInt(dateParseResult);
+            }
+            else if (numberOfPart == 2) {
+                month = Integer.parseInt(dateParseResult);
+            }
+            else if (numberOfPart == 3) {
+                year = Integer.parseInt(dateParseResult);
+            }
+            numberOfPart++;
+        }
+
+        return LocalDate.of(year, month, day);
+    }
+
     @Override
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
         if (!thisElement.equals("tableDate")) {
             readCounter++;
         }
         if (readCounter == 7) {
-            fileData.add(new Patient(fullName, address, birthDate, receiptDate, doctorFullName, conclusion));
+            patients.add(new Patient(fullName, address, birthDate, receiptDate, doctorFullName, conclusion));
             readCounter = 0;
         }
         thisElement = "";
     }
 
-    public List<Patient> getFileData() {
-        return fileData;
+    public List<Patient> getPatients() {
+        return patients;
     }
 }
