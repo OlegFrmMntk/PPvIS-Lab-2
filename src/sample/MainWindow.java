@@ -34,8 +34,8 @@ public class MainWindow extends Application {
         MenuBar menuBar = getMenuBar();
         root.setTop(menuBar);
 
-        Group toolBar = getToolBar(primaryStage);
-      //  root.setLeft(toolBar);
+        //Group toolBar = getToolBar(primaryStage);
+        //root.setLeft(toolBar);
 
         Group tableBar = tableGroup.getGroup();
         root.setRight(tableBar);
