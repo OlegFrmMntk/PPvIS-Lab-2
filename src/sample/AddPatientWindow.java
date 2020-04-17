@@ -62,7 +62,7 @@ public class AddPatientWindow {
         DatePicker receiptDateInput = new DatePicker(LocalDate.of(2020, 4, 1));
         dateBox.getChildren().addAll(receiptDate, receiptDateInput);
 
-        Label doctorFullName = new Label("Full Name of Doctor");
+        Label doctorFullName = new Label("Doctor name");
         TextField doctorFullNameInput = new TextField();
         doctorFullNameInput.setMinWidth(300);
         addingStage.getChildren().addAll(doctorFullName, doctorFullNameInput);

@@ -15,17 +15,15 @@ public class DeleteWindow {
 
         layout.setCenter(deleteGroup.getGroup());
 
-        Scene scene = new Scene(layout, 370, 200);
+        Scene scene = new Scene(layout, 400, 200);
+
         Stage stage = new Stage();
         stage.setTitle("Delete patients");
         stage.setScene(scene);
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(primaryStage);
-        stage.setX(primaryStage.getX() + 100);
-        stage.setY(primaryStage.getY() + 100);
 
         stage.show();
-
     }
 
 }

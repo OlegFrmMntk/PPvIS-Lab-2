@@ -18,15 +18,13 @@ public class SearchWindow {
         layout.setLeft(searchGroup.getGroup());
 
         Scene scene = new Scene(layout, 1000, 520);
+
         Stage stage = new Stage();
         stage.setTitle("Search patients");
         stage.setScene(scene);
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(primaryStage);
-        stage.setX(primaryStage.getX() + 100);
-        stage.setY(primaryStage.getY() + 100);
 
         stage.show();
     }
-
 }

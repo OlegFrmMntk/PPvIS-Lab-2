@@ -84,7 +84,7 @@ public class MainWindow extends Application {
         searchItem.setOnAction(actionEvent -> new SearchWindow(primaryStage, controller));
 
         Menu patientMenu = new Menu("Patient");
-        patientMenu.getItems().addAll(addItem, deleteItem, searchItem);
+        patientMenu.getItems().addAll(addItem, searchItem, deleteItem);
 
         MenuBar menuBar = new MenuBar();
         menuBar.getMenus().addAll(fileMenu, patientMenu);
