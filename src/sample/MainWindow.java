@@ -52,7 +52,8 @@ public class MainWindow extends Application {
         saveItem.setOnAction(actionEvent -> {
             try {
                 saveTableData();
-            } catch (TransformerException | ParserConfigurationException e) {
+            }
+            catch (TransformerException | ParserConfigurationException e) {
                 e.printStackTrace();
             }
         });
@@ -61,7 +62,8 @@ public class MainWindow extends Application {
         getItem.setOnAction(actionEvent -> {
             try {
                 getTableDataFromFile();
-            } catch (IOException | ParserConfigurationException | SAXException e) {
+            }
+            catch (IOException | ParserConfigurationException | SAXException e) {
                 e.printStackTrace();
             }
         });
@@ -142,11 +144,10 @@ public class MainWindow extends Application {
 
         FileChooser fileChooser = new FileChooser();
 
-        File file = fileChooser.showOpenDialog(primaryStage);
+        File file = fileChooser.showSaveDialog(primaryStage);
         if (file != null) {
             controller.saveTableData(file);
         }
-
     }
 
     public void getTableDataFromFile() throws IOException, SAXException, ParserConfigurationException {
