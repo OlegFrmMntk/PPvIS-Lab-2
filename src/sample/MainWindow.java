@@ -59,7 +59,7 @@ public class MainWindow extends Application {
             }
         });
 
-        MenuItem getItem = new MenuItem("Load");
+        MenuItem getItem = new MenuItem("Open");
         getItem.setOnAction(actionEvent -> {
             try {
                 getTableDataFromFile();

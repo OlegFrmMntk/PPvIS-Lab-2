@@ -72,7 +72,7 @@ public class AddPatientWindow {
         conclusionInput.setMinWidth(300);
         addingStage.getChildren().addAll(conclusion, conclusionInput);
 
-        Button addInfo = new Button("Add");
+        Button addInfo = new Button("Enter");
         addingStage.getChildren().add(addInfo);
 
         HBox adding = new HBox(addingStage, dateBox);
