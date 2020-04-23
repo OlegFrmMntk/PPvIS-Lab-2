@@ -17,7 +17,7 @@ public class MainWindowTableGroup {
     private Label totalRecordsCountLabel = new Label();
     private Label pageNumberLabel = new Label();
     private int totalRecordsCount = 0;
-    private int recordsOnPageCount = 5;
+    private int recordsOnPageCount = 10;
     private int pageCount = 1;
     private int pageNumber = 1;
     private Page<Patient> currentPage;
@@ -28,11 +28,15 @@ public class MainWindowTableGroup {
 
         Label chooseRecordsOnPageCountLabel = new Label("Choose record count");
         chooseRecordsOnPageCountLabel.setLayoutY(385);
+
         ObservableList<Integer> recordsCountValues = FXCollections.observableArrayList(5, 10, 15);
+
         ComboBox<Integer> chooseRecordsOnPageCountValueCombo = new ComboBox<>(recordsCountValues);
-        chooseRecordsOnPageCountValueCombo.setValue(5);
+
+        chooseRecordsOnPageCountValueCombo.setValue(10);
         chooseRecordsOnPageCountValueCombo.setLayoutY(385);
         chooseRecordsOnPageCountValueCombo.setLayoutX(120);
+
         chooseRecordsOnPageCountValueCombo.setOnAction(actionEvent -> {
             recordsOnPageCount = chooseRecordsOnPageCountValueCombo.getValue();
             pageNumber = 1;
@@ -76,8 +80,10 @@ public class MainWindowTableGroup {
 
         pageCountLabel.setText("Page count:" + pageCount);
         pageCountLabel.setLayoutY(420);
+
         totalRecordsCountLabel.setText("Total records count:" + totalRecordsCount);
         totalRecordsCountLabel.setLayoutY(450);
+
         pageNumberLabel.setText("Page number:" + pageNumber);
         pageNumberLabel.setLayoutY(460);
         pageNumberLabel.setLayoutX(295);
@@ -118,10 +124,9 @@ public class MainWindowTableGroup {
         lastPageButton.setLayoutY(420);
         lastPageButton.setLayoutX(380);
 
-        group.getChildren().addAll(table, chooseRecordsOnPageCountLabel,
-                                    chooseRecordsOnPageCountValueCombo, pageCountLabel,
-                                    totalRecordsCountLabel, firstPageButton,
-                                    previousPageButton, nextPageButton, lastPageButton, pageNumberLabel);
+        group.getChildren().addAll(table, chooseRecordsOnPageCountLabel, chooseRecordsOnPageCountValueCombo,
+                                   pageCountLabel, totalRecordsCountLabel, firstPageButton,
+                                   previousPageButton, nextPageButton, lastPageButton, pageNumberLabel);
 
     }
 

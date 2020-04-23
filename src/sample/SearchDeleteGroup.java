@@ -176,7 +176,8 @@ public class SearchDeleteGroup {
 
         if (numOfDeleted != 0) {
             alert.setContentText(Integer.toString(numOfDeleted) + " record(s) have been deleted");
-        } else {
+        }
+        else {
             alert.setContentText("No records found!");
         }
 

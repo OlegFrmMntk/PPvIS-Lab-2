@@ -75,7 +75,7 @@ public class MainWindow extends Application {
         });
 
         Menu fileMenu = new Menu("File");
-        fileMenu.getItems().addAll(saveItem, getItem, exitItem);
+        fileMenu.getItems().addAll(getItem, saveItem, exitItem);
 
         MenuItem addItem = new MenuItem("Add");
         addItem.setOnAction(actionEvent -> new AddPatientWindow(tableGroup, primaryStage, controller));
