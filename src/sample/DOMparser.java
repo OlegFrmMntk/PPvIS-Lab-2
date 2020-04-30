@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DOMparser {
 
-    public DOMparser(List<Patient> tableData, File file) throws ParserConfigurationException, TransformerException {
+    public void parse(List<Patient> tableData, File file) throws ParserConfigurationException, TransformerException {
 
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

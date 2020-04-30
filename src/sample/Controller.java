@@ -17,6 +17,7 @@ public class Controller {
 
     private List<Patient> mainTableData = new ArrayList<>();
     private List<Patient> searchTableData = new ArrayList<>();
+    private DOMparser parser;
 
     public void addPatientToArray(String fullName, String address, LocalDate birthDate,
                                  LocalDate receiptDate, String fullDoctorName, String conclusion) {
@@ -55,17 +56,19 @@ public class Controller {
         return page;
     }
 
-    public void saveTableData(File file) throws TransformerException, ParserConfigurationException {
-        new DOMparser(mainTableData, file);
+    public void saveTableData(File file, DOMparser parser) throws TransformerException, ParserConfigurationException {
+        parser.parse(mainTableData, file);
     }
 
-    public void getTableDataFromFile(File file) throws ParserConfigurationException, SAXException, IOException {
-
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser parser = factory.newSAXParser();
+    public void getTableDataFromFile(File file, SAXParser parser) throws ParserConfigurationException, SAXException,
+                                                                                                       IOException {
         SAXparser saxParser = new SAXparser();
 
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+
+        parser = factory.newSAXParser();
         parser.parse(file, saxParser);
+
         mainTableData = saxParser.getPatients();
     }
 

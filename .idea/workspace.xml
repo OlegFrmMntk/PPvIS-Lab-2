@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/DOMparser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/DOMparser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/MainWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/MainWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/SearchDeleteGroup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PPViS-Lab-2/sample/SearchDeleteGroup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/DOMparser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/DOMparser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SearchDeleteGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SearchDeleteGroup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,21 +219,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1587633520681" />
-    <state width="1493" height="69" key="GridCell.Tab.0.bottom" timestamp="1587635960180">
+    <state width="1493" height="58" key="GridCell.Tab.0.bottom" timestamp="1588242880235">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="69" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587635960180" />
-    <state width="1493" height="69" key="GridCell.Tab.0.center" timestamp="1587635960180">
+    <state width="1493" height="58" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588242880235" />
+    <state width="1493" height="58" key="GridCell.Tab.0.center" timestamp="1588242880235">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="69" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587635960180" />
-    <state width="1493" height="69" key="GridCell.Tab.0.left" timestamp="1587635960180">
+    <state width="1493" height="58" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588242880235" />
+    <state width="1493" height="58" key="GridCell.Tab.0.left" timestamp="1588242880235">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="69" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587635960180" />
-    <state width="1493" height="69" key="GridCell.Tab.0.right" timestamp="1587635960180">
+    <state width="1493" height="58" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588242880235" />
+    <state width="1493" height="58" key="GridCell.Tab.0.right" timestamp="1588242880235">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="69" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587635960180" />
+    <state width="1493" height="58" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588242880235" />
   </component>
 </project>

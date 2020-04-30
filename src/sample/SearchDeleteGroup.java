@@ -42,6 +42,9 @@ public class SearchDeleteGroup {
                 case "Full name and Address":
                     Button fullNameAndAddressButton = getButton(searchOrDelete);
 
+                    firstSearchParameterInput.clear();
+                    secondSearchParameterInput.clear();
+
                     group.getChildren().remove(2, group.getChildren().size());
 
                     group.getChildren().addAll(firstSearchParameterInput,
@@ -100,11 +103,14 @@ public class SearchDeleteGroup {
                     Button receiptDateOrDoctorDullNameButton = getButton(searchOrDelete);
                     DatePicker inputReceiptDateForSearch = getDatePickerForSearch();
 
+                    secondSearchParameterInput.clear();
+
                     group.getChildren().remove(2, group.getChildren().size());
                     group.getChildren().addAll(inputReceiptDateForSearch,
                                                secondSearchParameterInput,
                                                getFirstParameterLabel("Receipt date"),
-                                               getSecondParameterLabel("Doctor Full name"));
+                                               getSecondParameterLabel("Doctor Full name"),
+                                               receiptDateOrDoctorDullNameButton);
 
                     receiptDateOrDoctorDullNameButton.setOnAction(event -> {
                         if (searchOrDelete.equals("Search")) {

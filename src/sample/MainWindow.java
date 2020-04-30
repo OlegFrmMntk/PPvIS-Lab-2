@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
 import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,9 @@ public class MainWindow extends Application {
     private Controller controller = new Controller();
     private MainWindowTableGroup tableGroup = new MainWindowTableGroup(controller);
     private Stage primaryStage;
+    private SAXParser saxParser;
+    private DOMparser domParser = new DOMparser();
+
 
     public static void main(String[] args) {
         launch(args);
@@ -144,23 +148,26 @@ public class MainWindow extends Application {
     public void saveTableData() throws TransformerException, ParserConfigurationException {
 
         FileChooser fileChooser = new FileChooser();
-
         File file = fileChooser.showSaveDialog(primaryStage);
+
         if (file != null) {
-            controller.saveTableData(file);
+            controller.saveTableData(file, domParser);
         }
     }
 
     public void getTableDataFromFile() throws IOException, SAXException, ParserConfigurationException {
 
         FileChooser fileChooser = new FileChooser();
-
         File file = fileChooser.showOpenDialog(primaryStage);
+
         if (file != null) {
-            controller.getTableDataFromFile(file);
+            controller.getTableDataFromFile(file, saxParser);
             tableGroup.updateTable();
             tableGroup.setPageNumber(1);
         }
     }
 
+    public void setSaxParser(SAXParser saxParser) {
+        this.saxParser = saxParser;
+    }
 }
